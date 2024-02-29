@@ -1,0 +1,11 @@
+#crop {
+  @apply w-full;
+
+  & > div:first-child {
+    @apply w-full flex flex-col;
+
+    & > div:first-child {
+      @apply w-full flex items-center mb-10;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "types": [
+    { "type": "fix", "section": "Bug Fixes" },
+    { "type": "feat", "section": "Features" },
+    { "type": "build", "section": "Build" },
+    { "type": "change", "section": "Changes" },
+    { "type": "ci", "section": "Continuous integration" },
+    { "type": "docs", "section": "Documentation" },
+    { "type": "perf", "section": "Performance improvements" },
+    { "type": "remove", "section": "Removals" },
+    { "type": "revert", "section": "Reversals" },
+    { "type": "security", "section": "Security" },
+    { "type": "style", "section": "Style changes" },
+    { "type": "refactor", "section": "Refactoring" },
+    { "type": "test", "section": "Test" }
+  ]
+}

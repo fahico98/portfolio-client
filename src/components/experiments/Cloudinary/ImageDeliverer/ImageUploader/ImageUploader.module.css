@@ -1,0 +1,7 @@
+#imageUploader {
+  @apply flex justify-start;
+
+  & > input[type="file"] {
+    @apply hidden;
+  }
+}

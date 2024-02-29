@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 16px;
+  background-color: #ffffff;
+}
+
+@layer components {
+  p,
+  a,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  span,
+  label {
+    @apply tracking-wide selection:bg-high-700 selection:text-white;
+  }
+
+  .view-wrapper {
+    @apply w-full flex flex-col justify-start items-center mt-20;
+  }
+
+  .padding-x {
+    @apply lg:px-20 md:px-10 sm:px-5 xs:px-2.5 px-2;
+  }
+
+  .max-width {
+    @apply max-w-screen-xl;
+  }
+
+  .bg-high-gradient {
+    background: rgb(86, 118, 255);
+    background: linear-gradient(45deg, rgba(86, 118, 255, 1) 0%, rgba(81, 191, 191, 1) 95%);
+  }
+
+  .text-high-gradient {
+    background: linear-gradient(to right, #0000ff, #b3ccff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .experiment-card-gradient {
+    background: rgb(39, 35, 67);
+    background: linear-gradient(180deg, rgba(39, 35, 67, 1) 25%, rgba(39, 35, 67, 0) 100%);
+  }
+}

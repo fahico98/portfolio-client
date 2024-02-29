@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Sizes */
+
+  .btn-lg {
+    @apply flex items-center justify-center rounded-lg border-2 focus:ring-0 focus:outline-none h-min px-5 py-2 font-mono text-lg font-normal transition duration-[250ms];
+  }
+  .btn-md {
+    @apply flex items-center justify-center rounded-lg border-2 focus:ring-0 focus:outline-none h-min px-4 py-1.5 font-mono text-sm font-normal transition duration-[250ms];
+  }
+  .btn-sm {
+    @apply flex items-center justify-center rounded-md border-2 focus:ring-0 focus:outline-none h-min px-3 py-1 font-mono text-xs font-normal transition duration-[250ms];
+  }
+
+  /* Rounded */
+
+  .btn-icon-md {
+    @apply select-none rounded-full text-lg leading-3 focus:ring-0 focus:outline-none h-min p-3 transition duration-300;
+  }
+
+  /* Colors */
+
+  /* Solid */
+
+  .btn-high {
+    @apply select-none text-white border-high-700 bg-high-700 hover:bg-high-500 active:bg-high-400 focus:ring-2 focus:ring-high-700 disabled:bg-high-400 disabled:text-gray-300;
+  }
+  .btn-white {
+    @apply select-none text-headline-950 border-headline-950 bg-white hover:bg-gray-200 active:bg-gray-300 focus:ring-2 focus:ring-gray-200 disabled:bg-gray-300 disabled:text-gray-500;
+  }
+  .btn-secondary {
+    @apply select-none text-headline-950 border-headline-950 bg-secondary-200 hover:bg-secondary-300 active:bg-secondary-400 focus:ring-2 focus:ring-secondary-100 disabled:bg-secondary-400 disabled:text-gray-500;
+  }
+
+  /* Icon */
+
+  .btn-icon-white {
+    @apply text-white bg-white bg-opacity-30 hover:bg-white hover:text-high-700 active:text-high-700 active:bg-gray-200 focus:ring-2 focus:ring-white;
+  }
+  .btn-icon-high {
+    @apply text-high-700 bg-high-50 hover:bg-high-700 hover:text-white active:text-white active:bg-high-400 focus:ring-2 focus:ring-high-700;
+  }
+  .btn-icon-headline {
+    @apply text-headline-950 bg-headline-100 hover:bg-headline-950 hover:text-white active:text-white active:bg-headline-950 focus:ring-2 focus:ring-headline-950;
+  }
+
+  /* Transparent */
+
+  .btn-transparent-high {
+    @apply select-none text-high-700 border-high-700 bg-transparent hover:text-white hover:bg-high-700 active:text-white active:bg-high-500 focus:ring-2 focus:ring-high-700 disabled:border-high-300 disabled:text-high-300 disabled:bg-transparent;
+  }
+  .btn-transparent-white {
+    @apply select-none text-white border-white bg-transparent hover:text-high-700 hover:bg-white active:text-high-700 active:bg-gray-200 focus:ring-2 focus:ring-white;
+  }
+  .btn-transparent-secondary {
+    @apply select-none text-secondary-200 border-secondary-200 bg-transparent hover:text-headline-950 hover:bg-secondary-200 active:text-headline-950 active:bg-secondary-300 focus:ring-2 focus:ring-secondary-200;
+  }
+
+  /*.btn-high-gradient { @apply select-none text-white border-custom-black-400 bg-gradient-to-r from-high-400 to-high-200 hover:bg-high-500 active:bg-high-600 }*/
+  /*.btn-gray-gradient { @apply select-none text-custom-black-400 border-custom-black-400 bg-gradient-to-r from-custom-black-100 to-white hover:bg-custom-black-100 active:bg-custom-black-200 }*/
+
+  /*.btn-powder { @apply select-none text-martinique-900 border-martinique-900 bg-powder-200 active:bg-powder-300 }*/
+  /*.btn-iceberg { @apply select-none text-martinique-900 border-martinique-900 bg-iceberg-100 active:bg-iceberg-200 }*/
+  /*.btn-martinique { @apply select-none text-iceberg-100 border-martinique-900 bg-martinique-900 active:bg-martinique-800 }*/
+}

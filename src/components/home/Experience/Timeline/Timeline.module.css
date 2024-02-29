@@ -1,0 +1,45 @@
+#timeline {
+  & > div {
+    @apply w-full flex;
+
+    & > div:first-child {
+      @apply w-[30%] shrink-0 flex justify-end items-start mt-4;
+
+      & > span {
+        @apply bg-high-700 text-white text-lg font-sans px-4 py-0.5 rounded-2xl drop-shadow-lg;
+      }
+    }
+
+    & > div:nth-child(2) {
+      @apply shrink mx-6 flex flex-col items-center after:h-full after:shrink after:border-headline-200 after:border-l-2;
+
+      & > *:first-child {
+        @apply rounded-full overflow-hidden w-16 h-16 flex justify-center items-center bg-white shrink-0 drop-shadow-lg border-2 border-headline-200 hover:border-headline-950 transition duration-300;
+      }
+    }
+
+    & > div:nth-child(3) {
+      @apply flex flex-col justify-start items-start grow mt-5;
+    }
+  }
+}
+
+.titleText {
+  @apply text-xl text-headline-950 font-sans font-medium;
+}
+
+.subtitleText {
+  @apply text-base text-headline-400 font-sans font-normal;
+}
+
+.bodyText {
+  @apply text-base text-headline-950 font-sans font-normal;
+}
+
+.noteText {
+  @apply text-sm text-headline-400 font-sans font-normal;
+}
+
+.technologiesContainer {
+  @apply flex justify-start gap-x-2;
+}

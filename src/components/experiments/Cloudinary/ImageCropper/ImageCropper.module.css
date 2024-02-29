@@ -1,0 +1,3 @@
+#cropper {
+  @apply w-full h-full object-contain bg-transparent;
+}

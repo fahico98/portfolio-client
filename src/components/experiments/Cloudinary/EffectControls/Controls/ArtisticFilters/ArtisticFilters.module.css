@@ -1,0 +1,19 @@
+#artisticFilters {
+  @apply w-full;
+
+  & > div:first-child {
+    @apply w-full flex flex-col;
+
+    & > div:first-child {
+      @apply flex flex-col;
+
+      & > label {
+        @apply mb-2;
+      }
+    }
+  }
+}
+
+.title {
+  @apply text-high-700 text-xl font-serif font-bold;
+}

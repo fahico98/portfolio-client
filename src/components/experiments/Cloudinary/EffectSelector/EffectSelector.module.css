@@ -1,0 +1,19 @@
+#popoverContainer {
+  @apply w-[30rem] h-72 overflow-y-auto bg-white absolute top-12 left-0 rounded-xl drop-shadow-lg transition duration-300 border-2 border-headline-200;
+
+  & > div:first-child {
+    @apply w-full flex flex-col;
+
+    & > div:first-child {
+      @apply w-full flex flex-col gap-y-1 py-4;
+
+      & > button {
+        @apply w-full text-start cursor-pointer hover:bg-high-50 focus:bg-high-50 focus:outline-none active:bg-high-100 px-4 py-2;
+
+        & > p:first-child {
+          @apply font-sans text-high-700 text-base font-normal mb-1;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+#experiments {
+  @apply w-full mt-60;
+
+  & > div:first-child {
+    @apply grid grid-cols-6 grid-rows-6 gap-4;
+
+    & > div:first-child {
+      @apply col-span-2 row-span-3 mb-28;
+
+      & > h2 {
+        @apply text-high-700 font-serif font-bold text-5xl mb-10;
+      }
+    }
+
+    & > div:nth-child(2) {
+      @apply col-span-4 row-span-3 ml-28;
+    }
+
+    & > div:nth-child(3) {
+      @apply col-span-3 row-span-3;
+    }
+
+    & > div:nth-child(4) {
+      @apply col-span-3 row-span-3;
+    }
+  }
+
+  & .card {
+    @apply p-6 border-2 border-headline-200 hover:border-headline-950 active:border-headline-950 rounded-xl transition duration-300 relative;
+
+    & > .cardBody {
+      @apply h-full flex flex-col justify-start items-start;
+
+      & > h6 {
+        @apply text-xl font-serif text-white font-semibold leading-5 mb-4 z-[1];
+      }
+
+      & > p {
+        @apply text-base font-sans text-white font-normal mb-4 z-[1];
+      }
+
+      & > button {
+        @apply z-[1];
+      }
+    }
+
+    & > .cardFade {
+      @apply h-full w-full absolute top-0 left-0 rounded-xl;
+    }
+
+    & > .cardImageContainer {
+      @apply h-full w-full flex justify-end items-end bg-secondary-100 rounded-xl absolute top-0 left-0 pr-6 pb-6;
+
+      & > img {
+        @apply w-auto h-[60%] object-contain select-none;
+      }
+    }
+  }
+}

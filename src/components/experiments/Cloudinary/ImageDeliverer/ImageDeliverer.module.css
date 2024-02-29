@@ -1,0 +1,56 @@
+#imageDeliverer {
+  @apply w-full flex flex-col;
+
+  & > div:first-child {
+    @apply w-full aspect-square flex justify-center items-center rounded-xl bg-headline-200 border-2 border-headline-200 overflow-hidden relative mb-6;
+
+    & > div:nth-child(2) {
+      @apply w-full h-full;
+    }
+  }
+
+  & > div:nth-child(2) {
+    @apply w-full flex justify-between;
+  }
+
+  & img {
+    @apply h-full w-full object-contain;
+  }
+}
+
+.uploadImageLabel {
+  @apply w-full h-full flex flex-col justify-center items-center bg-transparent;
+
+  & > i {
+    @apply text-3xl text-high-700 select-none mb-2;
+  }
+
+  & > p {
+    @apply text-base text-headline-950 font-sans select-none;
+  }
+}
+
+.loadingContainer {
+  @apply w-full h-full flex-col justify-center items-center bg-headline-200 absolute top-0 left-0 rounded-xl z-[2];
+}
+
+.spinnerLoader {
+  width: 8px;
+  height: 8px;
+  animation: spinner-z355kx 1.2s infinite linear;
+  border-radius: 8px;
+  box-shadow:
+    20px 0px 0 0 #0000ff,
+    12.4px 15.6px 0 0 #0000ff,
+    -4.4px 19.4px 0 0 #0000ff,
+    -18px 8.6px 0 0 #0000ff,
+    -18px -8.6px 0 0 #0000ff,
+    -4.4px -19.4px 0 0 #0000ff,
+    12.4px -15.6px 0 0 #0000ff;
+}
+
+@keyframes spinner-z355kx {
+  to {
+    transform: rotate(360deg);
+  }
+}

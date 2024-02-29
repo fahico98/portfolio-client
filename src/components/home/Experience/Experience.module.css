@@ -1,0 +1,15 @@
+#experience {
+  @apply grid grid-cols-3 gap-x-8 mt-60;
+
+  & > div:first-child {
+    @apply w-full col-span-1;
+
+    & > h2 {
+      @apply text-high-700 font-serif font-bold text-5xl mb-10;
+    }
+  }
+
+  & > div:last-child {
+    @apply col-span-2;
+  }
+}
