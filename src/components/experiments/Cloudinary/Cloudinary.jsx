@@ -12,14 +12,13 @@ function Cloudinary() {
     setEffect({ ...effect })
   }
 
+  function originalImageSelected() {
+    setEffect(null)
+  }
+
   useEffect(() => {
     eventBus.on("cloudinary.change-effect", ({ effect }) => setEffect({ ...effect }))
-    eventBus.on("cloudinary.original-image-selected", () => setEffect(null))
-
-    return () => {
-      eventBus.off("cloudinary.change-effect")
-      eventBus.off("cloudinary.original-image-selected")
-    }
+    return () => eventBus.off("cloudinary.change-effect")
   }, [])
 
   return (
@@ -35,7 +34,7 @@ function Cloudinary() {
         <EffectControls effect={effect} />
       </div>
       <div>
-        <ImageDeliverer />
+        <ImageDeliverer originalImageSelected={originalImageSelected} />
       </div>
     </div>
   )

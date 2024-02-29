@@ -4,8 +4,9 @@ import { ImageCropper } from "@/components/experiments/Cloudinary/ImageCropper/I
 import { getCloudinaryImageElementWidth } from "@/utils/globalFunctions.js"
 import { useEffect, useState } from "react"
 import eventBus from "@/libs/mitt.js"
+import PropTypes from "prop-types"
 
-function ImageDeliverer() {
+function ImageDeliverer({ originalImageSelected }) {
   const CLOUDINARY_BASE_URL = "https://res.cloudinary.com/torrevia/image/upload"
   const CLOUDINARY_IMAGE_ELEMENT_ID = import.meta.env.VITE_CLOUDINARY_IMAGE_ELEMENT_ID
   const CLOUDINARY_AUTO_TRANSFORMATION = "t_portfolio_auto"
@@ -23,19 +24,15 @@ function ImageDeliverer() {
 
   function contentByStatus() {
     if (imageName) {
-      switch (status) {
-        case "cropper":
-          return <ImageCropper imageUrl={cloudinaryOriginalImageUrl} cropTrigger={cropTrigger} makeCrop={makeCrop} />
-        case "transformation":
-        case "original-image":
-          return (
-            <img
-              src={status === "transformation" ? cloudinaryTransformedImageUrl : cloudinaryOriginalImageUrl}
-              alt="Cloudinary image"
-              onLoad={() => setIsLoading(false)}
-            />
-          )
-      }
+      return status === "cropper" ? (
+        <ImageCropper imageUrl={cloudinaryOriginalImageUrl} cropTrigger={cropTrigger} makeCrop={makeCrop} />
+      ) : (
+        <img
+          src={status === "transformation" ? cloudinaryTransformedImageUrl : cloudinaryOriginalImageUrl}
+          alt="Cloudinary image"
+          onLoad={() => setIsLoading(false)}
+        />
+      )
     }
 
     return (
@@ -59,13 +56,20 @@ function ImageDeliverer() {
   }
 
   function selectOriginalImage() {
-    if (imageName) {
-      eventBus.emit("cloudinary.original-image-selected")
-      setCloudinaryOriginalImageUrl(`${CLOUDINARY_BASE_URL}/$w_${getCloudinaryImageElementWidth()}/${CLOUDINARY_AUTO_TRANSFORMATION}/${imageName}`)
+    originalImageSelected()
+    eventBus.emit("cloudinary.original-image-selected")
+
+    let originalImageUrl = `${CLOUDINARY_BASE_URL}/$w_${getCloudinaryImageElementWidth()}/${CLOUDINARY_AUTO_TRANSFORMATION}/${imageName}`
+    setCloudinaryOriginalImageUrl(originalImageUrl)
+
+    if (cloudinaryTransformation === CLOUDINARY_AUTO_TRANSFORMATION && !cloudinaryTransformationArgs) {
+      setCloudinaryTransformedImageUrl(originalImageUrl)
+    } else {
       setCloudinaryTransformation(CLOUDINARY_AUTO_TRANSFORMATION)
       setCloudinaryTransformationArgs("")
-      setStatus("original-image")
     }
+
+    setStatus("original-image")
   }
 
   function updateTransformation(transformation, transformationArgs) {
@@ -120,5 +124,7 @@ function ImageDeliverer() {
     </div>
   )
 }
+
+ImageDeliverer.propTypes = { originalImageSelected: PropTypes.func.isRequired }
 
 export { ImageDeliverer }

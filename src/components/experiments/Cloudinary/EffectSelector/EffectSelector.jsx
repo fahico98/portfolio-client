@@ -17,25 +17,26 @@ function EffectSelector() {
       name: "crop",
       label: "Recortar",
       description:
-        "Recorte una porción rectangular de su imagen especificando la posición y las dimensiones del recorte. Si en su imagen aparecen una o varias personas, " +
+        "Recorte una porción rectangular de su imagen especificando la posición y las dimensiones del recorte. Si en su imagen aparecen una o varias personas " +
         "puede realizar el recorte reconociendo sus rostros con inteligencia artificial."
     },
     {
       name: "color-replacement",
       label: "Reemplazo de color",
       description:
-        "Reemplace un color por otro dentro de la imagen aplicando un porcentaje de tolerancia que representa un radio en el espacio de color LAB, para que " +
+        "Reemplace un color por otro dentro de la imagen aplicando un porcentaje de tolerancia, que representa un radio en el espacio de color LAB, para que " +
         "también se reemplacen tonos similares."
     },
     {
       name: "vectorize",
       label: "Vectorizar",
-      description: "Esta obra filosófica, también conocida como En los extremos del bien y del mal, se dividió en cinco libros."
+      description:
+        "Agregue un efecto artístico agradable a su imagen reduciendo el número de colores presentes en ella y/o disminuyendo el porcentaje de detalle de esta."
     },
     {
       name: "artistic-filters",
       label: "Filtros artísticos",
-      description: "Esta obra filosófica, también conocida como En los extremos del bien y del mal, se dividió en cinco libros."
+      description: "Aplique cualquiera de los filtros artísticos mas comunes."
     }
   ]
 
