@@ -35,7 +35,13 @@ function Experiments() {
           <div className={`experiment-card-gradient ${styles.cardFade}`}></div>
         </div>
         <div className={styles.card}>
-          <h6 className={styles.cardTitle}>Coinranking</h6>
+          <div className={styles.cardBody}>
+            <h6 className={styles.cardTitle}>Coinranking</h6>
+            <p>Descripción...</p>
+            <button className="btn-md btn-high" onClick={() => navigate("/experimento/coinranking")}>
+              Explorar
+            </button>
+          </div>
         </div>
         <div className={styles.card}>
           <h6 className={styles.cardTitle}>One Weather Map</h6>
