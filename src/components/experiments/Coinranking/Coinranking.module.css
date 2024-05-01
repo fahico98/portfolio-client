@@ -1,22 +1,75 @@
 #coinranking {
   @apply w-full my-10;
 
+  & > div:first-child {
+    @apply w-full flex justify-between items-baseline px-3 mb-2;
+
+    & > p {
+      @apply font-normal text-sm font-sans text-high-700;
+    }
+  }
+
   & > table {
     @apply w-full;
 
     & > thead {
+      @apply rounded-xl;
+
       & > tr:first-child {
-        @apply bg-headline-200 rounded-tl-xl rounded-tr-xl;
+        @apply bg-headline-100;
 
         & > th {
-          @apply text-headline-950 font-semibold text-lg font-sans p-2;
+          @apply w-1/4 text-headline-950 font-semibold text-lg font-sans text-start p-3;
+        }
+
+        & > th:first-child {
+          @apply rounded-l-xl;
+        }
+
+        & > th:last-child {
+          @apply text-end rounded-r-xl;
         }
       }
     }
 
     & > tbody {
-      & > tr > td {
-        @apply font-normal text-headline-950 text-base font-sans;
+      & > tr {
+        @apply font-normal text-headline-950 text-base font-sans border-headline-200 border-b;
+
+        & > td {
+          @apply text-start w-1/4 p-3;
+        }
+
+        & > td:first-child {
+          & > div {
+            @apply flex justify-start items-center gap-x-4;
+
+            & > img {
+              @apply w-8 aspect-square object-contain;
+            }
+
+            & > div {
+              @apply flex flex-col items-start gap-y-2;
+
+              & > p:first-child {
+                @apply leading-3 text-base text-headline-950 font-normal font-sans;
+              }
+
+              & > p:nth-child(2) {
+                @apply leading-3 text-sm text-headline-950 font-medium font-sans;
+              }
+            }
+          }
+        }
+
+        & > td:nth-child(2),
+        & > td:nth-child(3) {
+          @apply leading-3 text-base text-headline-950 font-normal font-sans;
+        }
+
+        & > td:last-child {
+          @apply text-end;
+        }
       }
     }
 
@@ -26,7 +79,7 @@
     }
 
     & tr {
-      @apply w-full flex items-center justify-between;
+      @apply w-full;
     }
   }
 }

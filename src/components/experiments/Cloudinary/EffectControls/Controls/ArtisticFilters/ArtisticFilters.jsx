@@ -44,13 +44,11 @@ function ArtisticFilters() {
         <h6 className={`mb-4 ${styles.title}`}>Filtro</h6>
         <select id="effect-selector" className="input-high input-md w-1/2" onChange={event => setFilter(event.target.value)}>
           <option value="">Seleccionar filtro...</option>
-          {FILTERS.map((filter, index) => {
-            return (
-              <option key={index} value={filter}>
-                {titleCase(filter.replace("_", " "))}
-              </option>
-            )
-          })}
+          {FILTERS.map((filter, index) => (
+            <option key={index} value={filter}>
+              {titleCase(filter.replace("_", " "))}
+            </option>
+          ))}
         </select>
         <button type="submit" className="btn-md btn-high w-fit mt-10" disabled={!filter}>
           Aplicar efecto

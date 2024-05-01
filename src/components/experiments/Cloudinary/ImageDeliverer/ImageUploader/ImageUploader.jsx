@@ -9,7 +9,7 @@ function ImageUploader({ startImageUploadLoading }) {
   const CLOUDINARY_API_KEY = import.meta.env.VITE_CLOUDINARY_API_KEY
   const CLOUDINARY_BASE_URL = "https://api.cloudinary.com/v1_1"
   const CLOUDINARY_FOLDER = "torrevia/portfolio"
-  const CLOUDINARY_UPLOAD_PRESET = "public"
+  const CLOUDINARY_UPLOAD_PRESET = "portfolio"
   const CLOUDINARY_RESOURCE_TYPE = "auto"
   const CLOUDINARY_API = "upload"
 

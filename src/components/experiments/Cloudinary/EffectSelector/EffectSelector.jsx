@@ -17,14 +17,14 @@ function EffectSelector() {
       name: "crop",
       label: "Recortar",
       description:
-        "Recorte una porción rectangular de su imagen especificando la posición y las dimensiones del recorte. Si en su imagen aparecen una o varias personas " +
-        "puede realizar el recorte reconociendo sus rostros con inteligencia artificial."
+        "Recorte una porción rectangular de su imagen especificando la posición y las dimensiones del recorte. Puede realizar el recorte reconociendo rostros " +
+        "de personas con inteligencia artificial."
     },
     {
       name: "color-replacement",
       label: "Reemplazo de color",
       description:
-        "Reemplace un color por otro dentro de la imagen aplicando un porcentaje de tolerancia, que representa un radio en el espacio de color LAB, para que " +
+        "Reemplace un color por otro dentro de la imagen aplicando un porcentaje de tolerancia, que representa un radio en el espacio de color LAB para que " +
         "también se reemplacen tonos similares."
     },
     {
@@ -52,7 +52,7 @@ function EffectSelector() {
 
   return (
     <Popover>
-      <Popover.Button ref={popoverButton} className="btn-md btn-transparent-high w-fit" disabled={!imageUploaded}>
+      <Popover.Button ref={popoverButton} className="btn-md btn-high w-fit" disabled={!imageUploaded}>
         Seleccionar efecto&nbsp;<i className="bi bi-chevron-down"></i>
       </Popover.Button>
       <Transition
@@ -66,14 +66,12 @@ function EffectSelector() {
         <Popover.Panel id={styles.popoverContainer}>
           <div>
             <div>
-              {EFFECTS.map((effect, index) => {
-                return (
-                  <button type="button" key={index} onClick={() => handleImageEffectSelection(effect)}>
-                    <p>{effect.label}</p>
-                    <p className="help-md help-headline">{effect.description}</p>
-                  </button>
-                )
-              })}
+              {EFFECTS.map((effect, index) => (
+                <button type="button" key={index} onClick={() => handleImageEffectSelection(effect)}>
+                  <p>{effect.label}</p>
+                  <p className="help-md help-headline">{effect.description}</p>
+                </button>
+              ))}
             </div>
           </div>
         </Popover.Panel>

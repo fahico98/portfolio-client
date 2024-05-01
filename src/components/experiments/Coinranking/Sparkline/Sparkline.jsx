@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import { useEffect } from "react"
 import Chart from "chart.js/auto"
 
-function Sparkline({ sparklineData = [], index }) {
+function Sparkline({ sparklineData = [], index, change }) {
   const CANVAS_CONTAINER_ID = "sparkline-canvas-container"
   const CANVAS_ID = "sparkline-canvas"
 
@@ -14,11 +14,20 @@ function Sparkline({ sparklineData = [], index }) {
     canvas.setAttribute("id", `${CANVAS_ID}-${index}`)
     canvasContainer.appendChild(canvas)
 
+    let context = canvas.getContext("2d")
+    let gradientMainColor = parseFloat(change) >= 0 ? "rgba(22, 163, 74, 0.5)" : "rgba(200, 38, 38, 0.5)"
+    let lineColor = parseFloat(change) >= 0 ? "#16a34a" : "#dc2626"
+    let gradient = context.createLinearGradient(0, 0, 0, 45)
+
+    gradient.addColorStop(1, "rgba(255,255,255,0)")
+    gradient.addColorStop(0, gradientMainColor)
+
     let config = {
       type: "line",
       options: {
         plugins: {
-          legend: { display: false }
+          legend: { display: false },
+          tooltip: { enabled: false }
         },
         scales: {
           x: { display: false },
@@ -31,8 +40,8 @@ function Sparkline({ sparklineData = [], index }) {
           {
             label: "",
             data: sparklineData.map(data => parseFloat(data)),
-            backgroundColor: "#0000ff",
-            borderColor: "#0000ff",
+            backgroundColor: gradient,
+            borderColor: lineColor,
             pointRadius: 0,
             borderWidth: 1,
             fill: true
@@ -48,12 +57,21 @@ function Sparkline({ sparklineData = [], index }) {
     }
   }, [sparklineData])
 
-  return <div id={`${CANVAS_CONTAINER_ID}-${index}`} className={styles.sparkline} />
+  return (
+    <div id={styles.sparkline}>
+      <p className={parseFloat(change) >= 0 ? "text-green-600" : "text-red-600"}>
+        {parseFloat(change) > 0 && "+"}
+        {change}%
+      </p>
+      <div id={`${CANVAS_CONTAINER_ID}-${index}`} className={styles.canvasContainer} />
+    </div>
+  )
 }
 
 Sparkline.propTypes = {
   sparklineData: PropTypes.array,
-  index: PropTypes.number.isRequired
+  index: PropTypes.number.isRequired,
+  change: PropTypes.string.isRequired
 }
 
 export { Sparkline }

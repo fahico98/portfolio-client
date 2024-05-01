@@ -74,9 +74,9 @@ function ColorReplacement() {
             onChange={event => setTolerance(event.target.value)}
           />
           <datalist id="markers" className="mt-2">
-            {TOLERANCE_VALUES.map(value => {
-              return <option key={value} value={value} />
-            })}
+            {TOLERANCE_VALUES.map(value => (
+              <option key={value} value={value} />
+            ))}
           </datalist>
         </div>
         <button type="submit" className="btn-md btn-high w-fit mt-10">

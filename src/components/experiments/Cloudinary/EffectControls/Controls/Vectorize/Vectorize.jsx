@@ -40,9 +40,9 @@ function Vectorize() {
             onChange={event => setNumberOfColors(parseInt(event.target.value))}
           />
           <datalist id="number-of-colors-markers" className="mt-2">
-            {NUMBER_OF_COLORS.map(value => {
-              return <option key={value} value={value} />
-            })}
+            {NUMBER_OF_COLORS.map(value => (
+              <option key={value} value={value} />
+            ))}
           </datalist>
         </div>
         <h6 className={styles.title}>Porcentaje de detalle</h6>
@@ -59,9 +59,9 @@ function Vectorize() {
             onChange={event => setDetailPercentage(parseInt(event.target.value))}
           />
           <datalist id="detail-percentages-markers" className="mt-2">
-            {DETAIL_PERCENTAGES.map(value => {
-              return <option key={value} value={value} />
-            })}
+            {DETAIL_PERCENTAGES.map(value => (
+              <option key={value} value={value} />
+            ))}
           </datalist>
         </div>
         <button type="submit" className="btn-high btn-md w-fit">

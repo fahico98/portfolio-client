@@ -1,0 +1,17 @@
+@import "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+
+#leaflet {
+  @apply w-full h-[32rem] my-10;
+
+  & > div:first-child {
+    @apply flex justify-between items-end mb-4;
+
+    & > div:first-child {
+      @apply w-[25rem] flex flex-col justify-end items-start;
+    }
+  }
+
+  & > .mapContainer {
+    @apply w-full h-full rounded-xl border-2 border-headline-200 z-[1];
+  }
+}

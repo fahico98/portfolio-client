@@ -73,35 +73,32 @@ function Tint() {
             onChange={event => setBlendStrength(event.target.value)}
           />
           <datalist id="markers" className="mt-2">
-            {BLEND_STRENGTH_VALUES.map(value => {
-              return <option key={value} value={value} />
-            })}
+            {BLEND_STRENGTH_VALUES.map(value => (
+              <option key={value} value={value} />
+            ))}
           </datalist>
         </div>
         <h6 className={`mb-6 ${styles.title}`}>Colores a mezclar</h6>
-        {colors.map((color, index) => {
-          return (
-            <div key={index} className={`${index !== 2 && "mb-4"}`}>
-              {/*<p>{color.value}</p>*/}
-              <input
-                type="checkbox"
-                id={`${color.name}-checkbox`}
-                className="checkbox-md checkbox-high"
-                onChange={event => onColorChangeByIndex(index, event.target.checked, "active")}
-              />
-              <label htmlFor={color.name} className={`label-md w-fit ${color.active ? "text-headline-950" : "text-headline-500"}`}>
-                {color.label}
-              </label>
-              <input
-                type="color"
-                id={color.name}
-                disabled={!color.active}
-                onChange={event => onColorChangeByIndex(index, event.target.value, "value")}
-                className={`${color.active ? "bg-white" : "bg-headline-100"}`}
-              />
-            </div>
-          )
-        })}
+        {colors.map((color, index) => (
+          <div key={index} className={`${index !== 2 && "mb-4"}`}>
+            <input
+              type="checkbox"
+              id={`${color.name}-checkbox`}
+              className="checkbox-md checkbox-high"
+              onChange={event => onColorChangeByIndex(index, event.target.checked, "active")}
+            />
+            <label htmlFor={color.name} className={`label-md w-fit ${color.active ? "text-headline-950" : "text-headline-500"}`}>
+              {color.label}
+            </label>
+            <input
+              type="color"
+              id={color.name}
+              disabled={!color.active}
+              onChange={event => onColorChangeByIndex(index, event.target.value, "value")}
+              className={`${color.active ? "bg-white" : "bg-headline-100"}`}
+            />
+          </div>
+        ))}
         <button type="submit" className="btn-md btn-high w-fit mt-10">
           Aplicar efecto
         </button>
