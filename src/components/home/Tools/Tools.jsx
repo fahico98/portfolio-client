@@ -128,19 +128,17 @@ function Tools() {
     <div id={styles.tools}>
       <h2 id={scrollspy.links.tools.sectionId}>{scrollspy.links.tools.label}</h2>
       <div>
-        {tools.map((tool, index) => {
-          return (
-            <button type="button" key={index} className={`bg-white ${tool.hoverColorClass} ${tool.activeColorClass}`} onClick={() => goToUrl(tool.url)}>
-              <div>
-                <img src={`${imagesPath}${tool.image}.png`} alt={tool.label} />
-                <p>{tool.label}</p>
-              </div>
-              <div>
-                <i className="bi bi-arrow-up-right"></i>
-              </div>
-            </button>
-          )
-        })}
+        {tools.map((tool, index) => (
+          <button type="button" key={index} className={`bg-white ${tool.hoverColorClass} ${tool.activeColorClass}`} onClick={() => goToUrl(tool.url)}>
+            <div>
+              <img src={`${imagesPath}${tool.image}.png`} alt={tool.label} />
+              <p>{tool.label}</p>
+            </div>
+            <div>
+              <i className="bi bi-arrow-up-right"></i>
+            </div>
+          </button>
+        ))}
       </div>
     </div>
   )
