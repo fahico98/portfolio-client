@@ -45,29 +45,25 @@ function NavbarDialog({ transparentNavbar }) {
             <Popover.Panel id={styles.dialogContainer}>
               <div>
                 <div>
-                  {links.map((link, index) => {
-                    return (
-                      <button type="button" key={index} onClick={event => scrollToSection(event, link.sectionId)}>
-                        {link.label}
-                      </button>
-                    )
-                  })}
+                  {links.map((link, index) => (
+                    <button type="button" key={index} onClick={event => scrollToSection(event, link.sectionId)}>
+                      {link.label}
+                    </button>
+                  ))}
                 </div>
                 <hr />
                 <div>
-                  {socials.map((social, index) => {
-                    return (
-                      <button
-                        type="button"
-                        className="btn-icon-md btn-icon-high"
-                        title={social.title}
-                        key={index}
-                        onClick={event => openSocialInNewTab(event, social.url)}
-                      >
-                        <i className={`bi bi-${social.iconClass}`}></i>
-                      </button>
-                    )
-                  })}
+                  {socials.map((social, index) => (
+                    <button
+                      type="button"
+                      className="btn-icon-md btn-icon-high"
+                      title={social.title}
+                      key={index}
+                      onClick={event => openSocialInNewTab(event, social.url)}
+                    >
+                      <i className={`bi bi-${social.iconClass}`}></i>
+                    </button>
+                  ))}
                 </div>
               </div>
             </Popover.Panel>
