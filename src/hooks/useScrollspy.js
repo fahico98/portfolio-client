@@ -3,7 +3,7 @@ export function useScrollspy() {
     aboutMe: { label: "Sobre mí", sectionId: "about-me" },
     experience: { label: "Experiencia", sectionId: "experience" },
     tools: { label: "Herramientas", sectionId: "tools" },
-    experiments: { label: "Exeprimentos", sectionId: "experiments" },
+    experiments: { label: "Experimentos", sectionId: "experiments" },
     contact: { label: "Contacto", sectionId: "contact" }
   }
 

@@ -1,4 +1,4 @@
-import { OpenWeatherMap } from "@/components/experiments/OpenWeatherMap/OpenWeatherMap.jsx"
+import { Leaflet } from "@/components/experiments/Leaflet/Leaflet.jsx"
 import { Coinranking } from "@/components/experiments/Coinranking/Coinranking.jsx"
 import { Cloudinary } from "@/components/experiments/Cloudinary/Cloudinary.jsx"
 import { Experiment } from "@/views/Experiment/Experiment.jsx"
@@ -30,8 +30,8 @@ function Routes() {
               element: <Coinranking />
             },
             {
-              path: "/experimento/open-weather-map",
-              element: <OpenWeatherMap />
+              path: "/experimento/leaflet",
+              element: <Leaflet />
             }
           ]
         }
