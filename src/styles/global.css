@@ -50,8 +50,13 @@
     -webkit-text-fill-color: transparent;
   }
 
+  .footer-headline-gradient {
+    background: rgb(39, 35, 67);
+    background: linear-gradient(45deg, rgba(39, 35, 67, 1) 0%, rgba(0, 0, 136, 1) 100%);
+  }
+
   .experiment-card-gradient {
     background: rgb(39, 35, 67);
-    background: linear-gradient(180deg, rgba(39, 35, 67, 1) 25%, rgba(39, 35, 67, 0) 100%);
+    background: linear-gradient(180deg, rgba(39, 35, 67, 1) 20%, rgba(39, 35, 67, 0) 100%);
   }
 }
