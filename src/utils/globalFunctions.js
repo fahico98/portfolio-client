@@ -24,3 +24,17 @@ export function getCloudinaryImageElementWidth() {
     return Math.round(imgElement.getBoundingClientRect().width)
   }
 }
+
+export function formatCompactNumber(number) {
+  if (number < 0) return "-" + formatCompactNumber(-1 * number)
+  if (number < 1_000_000) return number
+  else if (number >= 1_000_000 && number < 1_000_000_000) return (number / 1_000_000).toFixed(2).replace(/\.0$/, "") + " Millios"
+  else if (number >= 1_000_000_000 && number < 1_000_000_000_000) return (number / 1_000_000_000).toFixed(2).replace(/\.0$/, "") + " Billios"
+  else if (number >= 1_000_000_000_000 && number < 1_000_000_000_000_000) return (number / 1_000_000_000_000).toFixed(2).replace(/\.0$/, "") + " Trillios"
+}
+
+export function formatCurrency(value, currency = "") {
+  let options = currency ? { style: "currency", currency } : { style: "decimal" }
+  let USDollarFormatter = new Intl.NumberFormat("en-US", options)
+  return USDollarFormatter.format(value)
+}
