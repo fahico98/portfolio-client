@@ -1,8 +1,8 @@
 #hero {
-  @apply w-full h-screen -mt-20 pt-20 flex justify-center items-center;
+  @apply w-full h-screen min-h-[40rem] -mt-20 pt-20 flex justify-center items-center;
 
   & > div {
-    @apply w-full grid gap-x-8 px-10 grid-cols-5;
+    @apply w-full grid gap-x-8 grid-cols-5;
 
     & > div:first-child {
       @apply col-span-3 flex flex-col justify-center items-start gap-y-4;
@@ -21,7 +21,7 @@
     }
 
     & > div:last-child {
-      @apply col-span-2 flex justify-center;
+      @apply col-span-2 flex justify-end;
 
       & > div {
         @apply relative;

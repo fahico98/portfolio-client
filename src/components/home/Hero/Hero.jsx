@@ -15,15 +15,15 @@ function Hero() {
           <p className={styles.text}>Hola, mi nombre es</p>
           <p className={styles.title}>Fahibram Cárcamo.</p>
           <p className={`${styles.text} mb-2`}>Soy un Desarrollador Web Full Stack de Bogotá D.C.</p>
-          <button className="btn-lg btn-transparent-white mb-2">Contáctame</button>
+          <button className="btn-lg btn-transparent-white mb-2">
+            Contáctame&nbsp;<i className="bi bi-chat-left-dots"></i>
+          </button>
           <div>
-            {socials.map((social, index) => {
-              return (
-                <button type="button" className="btn-icon-md btn-icon-white" title={social.title} key={index} onClick={() => window.open(social.url, "_blank")}>
-                  <i className={`bi bi-${social.iconClass}`}></i>
-                </button>
-              )
-            })}
+            {socials.map((social, index) => (
+              <button type="button" className="btn-icon-md btn-icon-white" title={social.title} key={index} onClick={() => window.open(social.url, "_blank")}>
+                <i className={`bi bi-${social.iconClass}`}></i>
+              </button>
+            ))}
           </div>
         </div>
         <div>
