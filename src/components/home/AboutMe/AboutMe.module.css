@@ -2,7 +2,7 @@
   @apply grid grid-cols-2 gap-x-24 mt-60;
 
   & > div:first-child {
-    @apply flex flex-col items-start justify-start h-min;
+    @apply w-full flex flex-col items-start justify-start;
 
     & > h2 {
       @apply text-high-700 font-serif font-bold text-5xl mb-10;
@@ -14,10 +14,10 @@
   }
 
   & > div:nth-child(2) {
-    @apply flex items-center justify-center w-full p-0;
+    @apply w-full flex items-center justify-center p-0;
 
     & > img {
-      @apply w-3/4 h-auto object-cover;
+      @apply w-full object-contain;
     }
   }
 }
