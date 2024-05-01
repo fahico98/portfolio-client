@@ -1,5 +1,5 @@
 import styles from "@/components/home/Experience/Timeline/Timeline.module.css"
-import estratek from "@/assets/images/estratekventures_logo.jpg"
+import estratekLogo from "@/assets/images/estratekventures_logo.jpg"
 import arrow from "@/assets/images/arow.png"
 
 function Timeline() {
@@ -26,12 +26,12 @@ function Timeline() {
         </div>
         <div>
           <a href="https://estratek.com.co/" target="_blank">
-            <img src={estratek} alt="Estratek" className="w-full aspect-square" />
+            <img src={estratekLogo} alt="Estratek" className="w-full aspect-square" />
           </a>
         </div>
         <div className="pb-12">
           <p className={styles.titleText}>
-            <a href="https://estratek.com.co/" target="_blank" className="hover:text-high-700 transition duration-300">
+            <a href="https://estratek.com.co/" target="_blank" className="link-headline">
               Estratek Ventures
             </a>
           </p>
@@ -51,7 +51,7 @@ function Timeline() {
           </p>
           <p className={`pl-4 ${styles.noteText}`}>Tecnologías empleadas: Vue.js, Tailwind CSS, Laravel y MySQL.</p>
           <p className={`pl-4 mb-2 ${styles.noteText}`}>Integraciones: Google Sheets, Siigo API y Alegra API.</p>
-          <a href="https://tuback.com.co/" target="_blank" className="pl-4 text-high-700 font-sans text-sm font-medium hover:underline">
+          <a href="https://tuback.com.co/" target="_blank" className="pl-4 link-high text-sm">
             Miralo aquí
           </a>
         </div>
@@ -61,13 +61,13 @@ function Timeline() {
           <span>Ene. 2024 - Mar. 2024</span>
         </div>
         <div>
-          <a href="#" target="_blank">
+          <a href="#">
             <i className="text-4xl text-high-700 leading-3 bi bi-briefcase" />
           </a>
         </div>
         <div className="pb-12">
           <p className={`mb-4 ${styles.titleText}`}>
-            <a href="#" target="_blank" className="hover:text-high-700 transition duration-300">
+            <a href="#" className="link-headline">
               Sitio Web Personal
             </a>
           </p>
@@ -85,7 +85,7 @@ function Timeline() {
           <img src={arrow} alt="Arrow" className="w-20 h-auto mb-4" />
           <p className={`mb-4 ${styles.titleText}`}>¿Quieres que tu empresa esté aquí?</p>
           <button type="button" className="btn-md btn-transparent-high">
-            Contáctame
+            Contáctame&nbsp;<i className="bi bi-chat-left-dots"></i>
           </button>
         </div>
       </div>
