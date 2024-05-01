@@ -21,6 +21,6 @@
     "header-full-stop": [0, "always"],
     "subject-full-stop": [0, "always"],
 
-    "type-enum": [1, "always", ["fix", "feat", "change", "docs", "perf", "remove", "revert", "security", "style", "refactor", "test", "config"]]
+    "type-enum": [1, "always", ["fix", "feat", "build", "change", "docs", "perf", "remove", "revert", "security", "style", "refactor", "test", "config"]]
   }
 }
