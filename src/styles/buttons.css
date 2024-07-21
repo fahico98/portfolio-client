@@ -17,6 +17,10 @@
 
   /* Rounded */
 
+  .btn-icon-sm {
+    @apply select-none rounded-full text-base leading-3 focus:ring-0 focus:outline-none h-min p-2 transition duration-300;
+  }
+
   .btn-icon-md {
     @apply select-none rounded-full text-lg leading-3 focus:ring-0 focus:outline-none h-min p-3 transition duration-300;
   }

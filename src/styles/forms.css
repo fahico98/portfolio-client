@@ -30,13 +30,13 @@
   /* Label sizes */
 
   .label-lg {
-    @apply font-sans font-medium select-none text-base block w-full;
+    @apply font-sans font-medium select-none text-base block w-fit;
   }
   .label-md {
-    @apply font-sans font-medium select-none text-sm block w-full;
+    @apply font-sans font-medium select-none text-sm block w-fit;
   }
   .label-sm {
-    @apply font-sans font-medium select-none text-xs block w-full;
+    @apply font-sans font-medium select-none text-xs block w-fit;
   }
 
   /* Label colors */
@@ -112,5 +112,8 @@
   }
   .link-white {
     @apply font-medium text-white underline hover:no-underline;
+  }
+  .link-secondary {
+    @apply font-medium text-secondary-100 underline hover:no-underline;
   }
 }
