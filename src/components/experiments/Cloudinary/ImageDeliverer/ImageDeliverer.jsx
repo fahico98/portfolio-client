@@ -1,44 +1,41 @@
-import { ImageUploader } from "@/components/experiments/Cloudinary/ImageDeliverer/ImageUploader/ImageUploader.jsx"
+import { getAutoTransformationUrl, getCloudinaryImageElementWidth, getCropTransformationArgsStr } from "@/utils/cloudinaryFunctions.js"
 import styles from "@/components/experiments/Cloudinary/ImageDeliverer/ImageDeliverer.module.css"
-import { ImageCropper } from "@/components/experiments/Cloudinary/ImageCropper/ImageCropper.jsx"
-import { getCloudinaryImageElementWidth } from "@/utils/globalFunctions.js"
+import { ModalEffectControls } from "@/components/experiments/Cloudinary/ModalEffectControls.jsx"
+import { ImageUploader } from "@/components/experiments/Cloudinary/ImageUploader.jsx"
+import { ImageCropper } from "@/components/experiments/Cloudinary/ImageCropper.jsx"
+import cloudinaryTransformations from "@/statics/cloudinaryTransformations.json"
 import { useEffect, useState } from "react"
 import eventBus from "@/libs/mitt.js"
-import PropTypes from "prop-types"
 
-function ImageDeliverer({ originalImageSelected }) {
-  const CLOUDINARY_BASE_URL = "https://res.cloudinary.com/torrevia/image/upload"
-  const CLOUDINARY_IMAGE_ELEMENT_ID = import.meta.env.VITE_CLOUDINARY_IMAGE_ELEMENT_ID
-  const CLOUDINARY_AUTO_TRANSFORMATION = "t_portfolio_auto"
-  const CLOUDINARY_CROP_TRANSFORMATION = "t_portfolio_crop"
-
+function ImageDeliverer() {
   const [cloudinaryOriginalImageUrl, setCloudinaryOriginalImageUrl] = useState("")
   const [cloudinaryTransformedImageUrl, setCloudinaryTransformedImageUrl] = useState("")
-  const [cloudinaryTransformation, setCloudinaryTransformation] = useState(CLOUDINARY_AUTO_TRANSFORMATION)
+  const [cloudinaryTransformation, setCloudinaryTransformation] = useState(cloudinaryTransformations.auto.name)
   const [cloudinaryTransformationArgs, setCloudinaryTransformationArgs] = useState("")
 
-  const [status, setStatus] = useState("")
-  const [imageName, setImageName] = useState("")
+  const [uploadedImageName, setUploadedImageName] = useState("")
+  const [uploadedImageWidth, setUploadedImageWidth] = useState(0)
+  const [uploadedImageHeight, setUploadedImageHeight] = useState(0)
   const [cropTrigger, setCropTrigger] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
+  const [status, setStatus] = useState("")
 
   function contentByStatus() {
-    if (imageName) {
+    if (uploadedImageName) {
       return status === "cropper" ? (
         <ImageCropper imageUrl={cloudinaryOriginalImageUrl} cropTrigger={cropTrigger} makeCrop={makeCrop} />
       ) : (
         <img
           src={status === "transformation" ? cloudinaryTransformedImageUrl : cloudinaryOriginalImageUrl}
-          alt="Cloudinary image"
           onLoad={() => setIsLoading(false)}
+          alt="Cloudinary image"
         />
       )
     }
-
     return (
       <>
         <i className="bi bi-file-earmark-image" />
-        <p>Sube tu imagen a cloudinary...</p>
+        <p className="">Sube tu imagen a Cloudinary.</p>
       </>
     )
   }
@@ -48,24 +45,21 @@ function ImageDeliverer({ originalImageSelected }) {
   }
 
   function makeCrop(cropper) {
-    let cropperDataObj = cropper.getData(true)
-    updateTransformation(
-      CLOUDINARY_CROP_TRANSFORMATION,
-      `$ch_${cropperDataObj.height},$cw_${cropperDataObj.width},$x_${cropperDataObj.x},$y_${cropperDataObj.y}`
-    )
+    updateTransformation(cloudinaryTransformations.crop.name, getCropTransformationArgsStr(uploadedImageWidth, uploadedImageHeight, cropper.getData(true)))
   }
 
   function selectOriginalImage() {
-    originalImageSelected()
     eventBus.emit("cloudinary.original-image-selected")
-
-    let originalImageUrl = `${CLOUDINARY_BASE_URL}/$w_${getCloudinaryImageElementWidth()}/${CLOUDINARY_AUTO_TRANSFORMATION}/${imageName}`
+    let originalImageUrl = getAutoTransformationUrl(uploadedImageName)
     setCloudinaryOriginalImageUrl(originalImageUrl)
 
-    if (cloudinaryTransformation === CLOUDINARY_AUTO_TRANSFORMATION && !cloudinaryTransformationArgs) {
+    /**
+     * No se...
+     */
+    if (cloudinaryTransformation === cloudinaryTransformations.auto.name && !cloudinaryTransformationArgs) {
       setCloudinaryTransformedImageUrl(originalImageUrl)
     } else {
-      setCloudinaryTransformation(CLOUDINARY_AUTO_TRANSFORMATION)
+      setCloudinaryTransformation(cloudinaryTransformations.auto.name)
       setCloudinaryTransformationArgs("")
     }
 
@@ -84,19 +78,27 @@ function ImageDeliverer({ originalImageSelected }) {
     setStatus(effect.name === "crop" ? "cropper" : "transformation")
   }
 
-  useEffect(() => selectOriginalImage(), [imageName])
+  useEffect(() => selectOriginalImage(), [uploadedImageName])
 
   useEffect(() => {
-    let widthArgument = `$w_${getCloudinaryImageElementWidth()}`
-    let completeArguments = cloudinaryTransformationArgs ? `${cloudinaryTransformationArgs},${widthArgument}` : widthArgument
-    setCloudinaryTransformedImageUrl(`${CLOUDINARY_BASE_URL}/${completeArguments}/${cloudinaryTransformation}/${imageName}`)
+    let scaleArgument = `$scale_${getCloudinaryImageElementWidth()}`
+    let completeArguments = cloudinaryTransformationArgs ? `${cloudinaryTransformationArgs},${scaleArgument}` : scaleArgument
+    setCloudinaryTransformedImageUrl(
+      `${import.meta.env.VITE_CLOUDINARY_DELIVERY_BASE_URL}/${completeArguments}/${cloudinaryTransformation}/${uploadedImageName}`
+    )
   }, [cloudinaryTransformation, cloudinaryTransformationArgs])
 
   useEffect(() => {
     eventBus.on("cloudinary.change-effect", setDelivererStatus)
-    eventBus.on("cloudinary.image-uploaded", ({ imageName }) => setImageName(imageName))
+
+    eventBus.on("cloudinary.image-uploaded", ({ imageName, imageWidth, imageHeight }) => {
+      setUploadedImageName(imageName)
+      setUploadedImageWidth(imageWidth)
+      setUploadedImageHeight(imageHeight)
+    })
+
     eventBus.on("cloudinary.apply-transformation", ({ transformation, transformationArguments }) => {
-      if (transformation === CLOUDINARY_CROP_TRANSFORMATION) setCropTrigger(cropTrigger + 1)
+      if (transformation === cloudinaryTransformations.crop.name) setCropTrigger(cropTrigger + 1)
       else updateTransformation(transformation, transformationArguments)
     })
 
@@ -109,22 +111,37 @@ function ImageDeliverer({ originalImageSelected }) {
 
   return (
     <div id={styles.imageDeliverer}>
-      <div id={CLOUDINARY_IMAGE_ELEMENT_ID} className={`${!imageName && styles.uploadImageLabel}`}>
+      <div id={import.meta.env.VITE_CLOUDINARY_IMAGE_ELEMENT_ID} className={`${!uploadedImageName && styles.uploadImageLabel}`}>
         <div className={`${isLoading ? "flex" : "hidden"} ${styles.loadingContainer}`}>
           <div className={styles.spinnerLoader} />
         </div>
         {contentByStatus()}
       </div>
-      <div>
+
+      {/* Buttons container (less than 768px width) */}
+      <div className={styles.buttonsContainer}>
         <ImageUploader startImageUploadLoading={startImageUploadLoading} />
-        <button type="button" className="btn-transparent-high btn-md" onClick={selectOriginalImage} disabled={status === "original-image" || !imageName}>
-          Mostrar imagen original
+        <button type="button" className="btn-sm btn-high" onClick={selectOriginalImage} disabled={status === "original-image" || !uploadedImageName}>
+          <span className="hidden sm:block">Quitar efecto</span>
+          <i className="block sm:hidden bi bi-arrow-repeat" />
         </button>
+        <ModalEffectControls />
+      </div>
+
+      {/* Buttons container (greater than 768px width) */}
+      <div className={styles.buttonsContainerMd}>
+        <button
+          type="button"
+          className="btn-sm xl:btn-md btn-transparent-high"
+          onClick={selectOriginalImage}
+          disabled={status === "original-image" || !uploadedImageName}
+        >
+          Quitar efecto
+        </button>
+        <ImageUploader startImageUploadLoading={startImageUploadLoading} />
       </div>
     </div>
   )
 }
-
-ImageDeliverer.propTypes = { originalImageSelected: PropTypes.func.isRequired }
 
 export { ImageDeliverer }

@@ -1,3 +1,19 @@
 #contact {
-  @apply w-full;
+  @apply w-full flex justify-center items-start my-60;
+
+  & > div:first-child {
+    @apply w-1/2;
+
+    & > h2 {
+      @apply text-high-700 font-serif font-bold text-5xl mb-10;
+    }
+
+    & > form {
+      @apply w-full flex flex-col gap-y-6;
+
+      & > div {
+        @apply w-full;
+      }
+    }
+  }
 }

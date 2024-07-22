@@ -3,12 +3,6 @@
 @tailwind utilities;
 
 @layer components {
-  /*.select-high {*/
-  /*  & > option[hover] {*/
-  /*    @apply bg-high-700 text-white font-sans font-bold;*/
-  /*  }*/
-  /*}*/
-
   /* Input sizes */
 
   .input-lg {
@@ -36,13 +30,13 @@
   /* Label sizes */
 
   .label-lg {
-    @apply font-sans font-medium select-none text-base block w-full;
+    @apply font-sans font-medium select-none text-base block w-fit;
   }
   .label-md {
-    @apply font-sans font-medium select-none text-sm block w-full;
+    @apply font-sans font-medium select-none text-sm block w-fit;
   }
   .label-sm {
-    @apply font-sans font-medium select-none text-xs block w-full;
+    @apply font-sans font-medium select-none text-xs block w-fit;
   }
 
   /* Label colors */
@@ -106,5 +100,20 @@
   }
   .checkbox-headline {
     @apply border-gray-300 text-headline-950 focus:ring-headline-950;
+  }
+
+  /* Links */
+
+  .link-high {
+    @apply font-medium text-high-700 underline hover:no-underline;
+  }
+  .link-headline {
+    @apply font-medium text-headline-950 underline hover:no-underline;
+  }
+  .link-white {
+    @apply font-medium text-white underline hover:no-underline;
+  }
+  .link-secondary {
+    @apply font-medium text-secondary-100 underline hover:no-underline;
   }
 }

@@ -1,0 +1,35 @@
+.titleText {
+  @apply text-high-700 text-lg lg:text-xl xl:text-2xl font-serif font-bold mb-1 lg:mb-2 xl:mb-4;
+}
+
+.descriptionText {
+  @apply text-headline-950 font-normal font-sans text-xs lg:text-sm xl:text-base block;
+}
+
+.descriptionHeaderContainer {
+  @apply flex flex-col my-2 lg:my-4 xl:my-6;
+}
+
+.inputContainerTitleText {
+  @apply text-high-700 text-base lg:text-lg xl:text-xl font-serif font-bold mb-2 lg:mb-4 xl:mb-6;
+}
+
+.colorPicker {
+  @apply bg-white w-10 lg:w-20 xl:w-40 h-6 lg:h-7 xl:h-8 py-0.5 xl:py-1 px-1 xl:px-1.5 ring-gray-300 rounded-lg shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-high-700 disabled:bg-headline-100;
+}
+
+.inputContainerMargin {
+  @apply mb-3 xl:mb-6 overflow-x-visible;
+}
+
+.inputRangeHeight {
+  @apply h-1 lg:h-1.5 xl:h-auto;
+}
+
+.inputRangeText {
+  @apply text-base lg:text-lg xl:text-xl font-normal text-headline-950;
+}
+
+.applyEffectButtonMargin {
+  @apply mt-4 xl:mt-6;
+}

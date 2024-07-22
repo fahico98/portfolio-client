@@ -1,0 +1,11 @@
+#sparkline {
+  @apply h-fit flex flex-col justify-center items-end;
+
+  & > p {
+    @apply font-sans text-sm font-medium;
+  }
+
+  & > .canvasContainer {
+    @apply w-20 aspect-video;
+  }
+}

@@ -1,0 +1,34 @@
+#tools {
+  & > div:nth-child(2) {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 sm:gap-2 md:gap-4;
+
+    & > button {
+      @apply p-3 md:p-4 flex justify-between items-start border-2 border-headline-200 rounded-xl cursor-pointer hover:border-headline-950 active:border-headline-950 transition duration-300;
+
+      & > div:first-child {
+        @apply flex flex-col justify-start items-start gap-y-2;
+
+        & > img {
+          @apply w-12 h-12 object-contain;
+        }
+
+        & > p {
+          @apply text-headline-950 font-sans text-lg font-medium;
+        }
+      }
+
+      & > div:nth-child(2) {
+        @apply flex justify-end items-start;
+
+        & > i {
+          @apply text-2xl text-headline-400 transition duration-300;
+        }
+      }
+
+      &:hover div:nth-child(2) i,
+      &:active div:nth-child(2) i {
+        @apply text-headline-950;
+      }
+    }
+  }
+}

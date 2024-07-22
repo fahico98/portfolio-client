@@ -1,6 +1,6 @@
-import { OpenWeatherMap } from "@/components/experiments/OpenWeatherMap/OpenWeatherMap.jsx"
 import { Coinranking } from "@/components/experiments/Coinranking/Coinranking.jsx"
 import { Cloudinary } from "@/components/experiments/Cloudinary/Cloudinary.jsx"
+import { GoogleMaps } from "@/components/experiments/GoogleMaps/GoogleMaps.jsx"
 import { Experiment } from "@/views/Experiment/Experiment.jsx"
 import { Error404 } from "@/views/Error404/Error404.jsx"
 import { Home } from "@/views/Home/Home.jsx"
@@ -30,8 +30,8 @@ function Routes() {
               element: <Coinranking />
             },
             {
-              path: "/experimento/open-weather-map",
-              element: <OpenWeatherMap />
+              path: "/experimento/google-maps",
+              element: <GoogleMaps />
             }
           ]
         }

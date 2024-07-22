@@ -1,0 +1,17 @@
+#imageContainer {
+  & > #frame1 {
+    @apply w-64 lg:w-80 h-64 lg:h-80 border-white rounded-2xl border-4 bg-transparent absolute top-0 left-0 transition duration-300;
+  }
+
+  & > #frame2 {
+    @apply w-64 lg:w-80 h-64 lg:h-80 border-white rounded-2xl border-4 bg-transparent absolute top-0 left-0 transition duration-300;
+  }
+
+  &:hover #frame1 {
+    @apply translate-x-4 translate-y-4;
+  }
+
+  &:hover #frame2 {
+    @apply -translate-x-4 -translate-y-4;
+  }
+}
