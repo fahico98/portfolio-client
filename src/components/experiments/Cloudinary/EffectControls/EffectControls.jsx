@@ -1,17 +1,16 @@
-import { ColorReplacement } from "@/components/experiments/Cloudinary/EffectControls/Controls/ColorReplacement/ColorReplacement.jsx"
-import { ArtisticFilters } from "@/components/experiments/Cloudinary/EffectControls/Controls/ArtisticFilters/ArtisticFilters.jsx"
-import { Vectorize } from "@/components/experiments/Cloudinary/EffectControls/Controls/Vectorize/Vectorize.jsx"
-import styles from "@/components/experiments/Cloudinary/EffectControls/EffectControls.module.css"
-import { Crop } from "@/components/experiments/Cloudinary/EffectControls/Controls/Crop/Crop.jsx"
-import { Tint } from "@/components/experiments/Cloudinary/EffectControls/Controls/Tint/Tint.jsx"
+import { ColorReplacement } from "@/components/experiments/Cloudinary/EffectControls/ColorReplacement.jsx"
+import { ArtisticFilters } from "@/components/experiments/Cloudinary/EffectControls/ArtisticFilters.jsx"
+import { Vectorize } from "@/components/experiments/Cloudinary/EffectControls/Vectorize.jsx"
+import { Crop } from "@/components/experiments/Cloudinary/EffectControls/Crop.jsx"
+import { Tint } from "@/components/experiments/Cloudinary/EffectControls/Tint.jsx"
 import { useEffect, useState } from "react"
 import eventBus from "@/libs/mitt.js"
 
 function EffectControls() {
-  const [effectName, setEffectName] = useState("")
+  const [selectedEffectName, setSelectedEffectName] = useState("")
 
   function controlContent() {
-    switch (effectName) {
+    switch (selectedEffectName) {
       case "tint":
         return <Tint />
       case "crop":
@@ -24,25 +23,26 @@ function EffectControls() {
         return <ArtisticFilters />
       default:
         return (
-          <div id={styles.effectControlsContainer}>
-            <i className="bi bi-hand-index"></i>
-            <p>Selecciona el efecto que quieras aplicar a tu imágen</p>
+          <div className="px-[20%] mt-2 xl:mt-4 w-full h-full rounded-xl border-2 border-headline-200 flex flex-col justify-center items-center">
+            <p className="text-lg lg:text-3xl text-headline-200 font-sans select-none text-center">
+              <i className="bi bi-scissors mr-2"></i>
+              <i className="bi bi-palette"></i>
+            </p>
+            <p className="text-lg lg:text-3xl text-headline-200 font-sans select-none text-center">
+              <i className="bi bi-transparency mr-2"></i>
+              <i className="bi bi-palette2"></i>
+            </p>
           </div>
         )
     }
   }
 
   useEffect(() => {
-    eventBus.on("cloudinary.change-effect", ({ effect }) => setEffectName(effect.name))
-    eventBus.on("cloudinary.original-image-selected", () => setEffectName(""))
-
-    return () => {
-      eventBus.off("cloudinary.change-effect")
-      eventBus.off("cloudinary.original-image-selected")
-    }
+    eventBus.on("cloudinary.change-effect", ({ effect }) => setSelectedEffectName(effect.name))
+    return () => eventBus.off("cloudinary.change-effect")
   }, [])
 
-  return <div id={styles.effectControls}>{controlContent()}</div>
+  return <div className="w-full h-full flex flex-col justify-start items-start">{controlContent()}</div>
 }
 
 export { EffectControls }

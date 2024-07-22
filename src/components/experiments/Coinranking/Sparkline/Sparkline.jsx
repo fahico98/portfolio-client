@@ -53,7 +53,8 @@ function Sparkline({ sparklineData = [], index, change }) {
     new Chart(canvas, config)
 
     return () => {
-      document.querySelector(`#${CANVAS_ID}-${index}`).remove()
+      let sparkline = document.querySelector(`#${CANVAS_ID}-${index}`)
+      if (sparkline) sparkline.remove()
     }
   }, [sparklineData])
 

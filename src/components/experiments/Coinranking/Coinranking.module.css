@@ -1,5 +1,5 @@
 #coinranking {
-  @apply w-full my-10;
+  @apply w-full my-10 min-h-[calc(100vh-5rem)];
 
   & > div:first-child {
     @apply w-full flex justify-between items-baseline px-3 mb-2;

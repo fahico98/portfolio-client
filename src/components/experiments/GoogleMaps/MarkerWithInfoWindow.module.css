@@ -1,0 +1,11 @@
+.infoWindowContent {
+  @apply flex items-center gap-x-2 h-fit max-w-80 min-w-0 w-fit p-1;
+}
+
+div:has(> div > .infoWindowContent) {
+  overflow: auto !important;
+}
+
+div:has(> div > div > .infoWindowContent) {
+  padding: 0 !important;
+}

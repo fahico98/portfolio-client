@@ -1,0 +1,29 @@
+{
+  "auto": {
+    "name": "t_portfolio_auto"
+  },
+  "crop": {
+    "name": "t_portfolio_crop"
+  },
+  "tint_one_color": {
+    "name": "t_portfolio_tint_one_color"
+  },
+  "tint_two_colors": {
+    "name": "t_portfolio_tint_two_colors"
+  },
+  "tint_three_colors": {
+    "name": "t_portfolio_tint_three_colors"
+  },
+  "color_replacement": {
+    "name": "t_portfolio_color_replacement"
+  },
+  "color_replacement_default": {
+    "name": "t_portfolio_color_replacement_default"
+  },
+  "vectorize": {
+    "name": "t_portfolio_vectorize"
+  },
+  "art": {
+    "name": "t_portfolio_art"
+  }
+}
