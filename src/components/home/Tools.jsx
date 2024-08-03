@@ -18,7 +18,6 @@ import styles from "@/components/home/Tools.module.css"
 import { useScrollspy } from "@/hooks/useScrollspy.js"
 
 function Tools() {
-  const imagesPath = "/src/assets/images/technologies/"
   const scrollspy = new useScrollspy()
 
   const TOOLS = [
