@@ -2,10 +2,10 @@
   @apply h-fit flex flex-col justify-center items-end;
 
   & > p {
-    @apply font-sans text-sm font-medium;
+    @apply font-sans text-xs md:text-sm font-medium;
   }
 
   & > .canvasContainer {
-    @apply w-20 aspect-video;
+    @apply w-14 lg:w-16 xl:w-20 aspect-video;
   }
 }

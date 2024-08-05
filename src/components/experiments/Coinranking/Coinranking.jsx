@@ -59,7 +59,7 @@ function Coinranking() {
   return (
     <div id={styles.coinranking}>
       <div>
-        <p>Todos los valores están en dólares estadounidenses.</p>
+        <p className="hidden sm:block">Todos los valores están en dólares estadounidenses.</p>
         <p>{isLoading || counter === 0 ? "Cargando..." : `Próxima actualización en ${counter}`}</p>
       </div>
       <table>
@@ -78,7 +78,7 @@ function Coinranking() {
                 <div>
                   <img src={coin.iconUrl} alt={coin.name} />
                   <div>
-                    <p>{coin.name}</p>
+                    <p className="hidden sm:block">{coin.name}</p>
                     <p>{coin.symbol}</p>
                   </div>
                 </div>

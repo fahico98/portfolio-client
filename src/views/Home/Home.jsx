@@ -1,7 +1,7 @@
 import { Experiments } from "@/components/home/Experiments.jsx"
 import { Experience } from "@/components/home/Experience.jsx"
 import { AboutMe } from "@/components/home/AboutMe.jsx"
-import { Contact } from "@/components/home/Contact/Contact.jsx"
+import { Contact } from "@/components/home/Contact/Contact/Contact.jsx"
 import { Tools } from "@/components/home/Tools.jsx"
 import { Hero } from "@/components/home/Hero.jsx"
 import { useScrollspy } from "@/hooks/useScrollspy.js"
