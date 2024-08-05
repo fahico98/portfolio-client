@@ -3,7 +3,11 @@
     @apply w-full flex;
 
     & > div:first-child {
-      @apply w-0 md:w-auto shrink-0 flex justify-end items-start mt-4;
+      @apply w-0 md:w-[14.5rem] shrink-0 flex justify-end items-start mt-4;
+
+      & > div:first-child {
+        @apply w-full;
+      }
     }
 
     & > div:nth-child(2) {
@@ -21,7 +25,7 @@
 }
 
 .timeRange {
-  @apply bg-high-700 text-white font-sans rounded-2xl drop-shadow-lg;
+  @apply bg-high-700 text-white font-sans rounded-2xl drop-shadow-lg text-start md:text-center w-auto md:w-full;
 }
 
 .innerTimeRange {

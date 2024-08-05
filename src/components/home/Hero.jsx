@@ -15,7 +15,7 @@ function Hero() {
   const location = useLocation()
   const scrollspy = new useScrollspy()
 
-  const TITLE_CLASSES = "text-4xl sm:text-5xl lg:text-6xl font-bold font-serif text-white text-center md:text-start"
+  const TITLE_CLASSES = "text-3xl sm:text-5xl lg:text-6xl font-bold font-serif text-white text-center md:text-start"
   const TEXT_CLASSES = "text-base lg:text-xl font-sans font-normal text-white text-center md:text-start"
 
   function scrollToContactSection() {
