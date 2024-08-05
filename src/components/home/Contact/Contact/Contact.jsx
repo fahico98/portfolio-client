@@ -99,7 +99,7 @@ function Contact() {
             )}
           </div>
           <div>
-            <label htmlFor="message" className={`${formValidationObj.email ? "label-error" : "label-headline"} label-sm sm:label-md w-fit mb-1 ml-2`}>
+            <label htmlFor="message" className={`${formValidationObj.message ? "label-error" : "label-headline"} label-sm sm:label-md w-fit mb-1 ml-2`}>
               Mensaje
             </label>
             <textarea
