@@ -10,7 +10,7 @@ function Hero() {
     { iconClass: "github", title: "GitHub", url: "https://github.com/fahico98" }
   ]
 
-  const [, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
   const navigate = useNavigate()
   const location = useLocation()
   const scrollspy = new useScrollspy()
@@ -19,8 +19,13 @@ function Hero() {
   const TEXT_CLASSES = "text-base lg:text-xl font-sans font-normal text-white text-center md:text-start"
 
   function scrollToContactSection() {
-    if (location.pathname === "/") setSearchParams({ seccion: scrollspy.links.contact.sectionPath })
-    else navigate(`/?seccion=${scrollspy.links.contact.sectionPath}`)
+    if (location.pathname === "/") {
+      let currentSectionPath = searchParams.get("seccion")
+      if (currentSectionPath && currentSectionPath === scrollspy.links.contact.sectionPath) scrollspy.scrollToSection(scrollspy.links.contact.sectionId)
+      else setSearchParams({ seccion: scrollspy.links.contact.sectionPath })
+    } else {
+      navigate(`/?seccion=${scrollspy.links.contact.sectionPath}`)
+    }
   }
 
   return (

@@ -72,7 +72,7 @@ function Timeline() {
               Sitio Web Personal
             </a>
           </p>
-          <p className="home-section-text">Creado con amor y arte ¿Te gusta?</p>
+          <p className="home-section-text">Creado con amor y arte ¿Te gusta?.</p>
         </div>
       </div>
       <div>

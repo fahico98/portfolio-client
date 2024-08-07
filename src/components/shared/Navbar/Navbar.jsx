@@ -1,11 +1,15 @@
-import { NavbarDialog } from "@/components/shared/Navbar/NavbarDialog.jsx"
 import transparentNavbarRoutes from "@/statics/transparentNavbarRoutes.json"
+import cvDocument from "@/assets/documents/FAHIBRAM-CARCAMO-CV-2024-ES.pdf"
+import { NavbarDialog } from "@/components/shared/Navbar/NavbarDialog.jsx"
 import { useLocation, Link } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 function Navbar() {
-  const [onTop, setOnTop] = useState(true)
   const [hasTransparentNavbar, setHasTransparentNavbar] = useState(true)
+  const [onTop, setOnTop] = useState(true)
+
+  const downloadLink = useRef(null)
+
   let location = useLocation()
 
   const NAVBAR_CLASSES = "w-full flex justify-center fixed top-0 left-0 right-0 transition duration-300 p-0 z-10"
@@ -33,9 +37,16 @@ function Navbar() {
           </Link>
         </div>
         <div className="w-1/3 flex justify-center p-0">
-          <button type="button" className={`hidden sm:block btn-md ${hasTransparentNavbar && onTop ? "btn-transparent-white" : "btn-transparent-high"}`}>
+          <button
+            type="button"
+            className={`hidden sm:block btn-md ${hasTransparentNavbar && onTop ? "btn-transparent-white" : "btn-transparent-high"}`}
+            onClick={() => downloadLink.current.click()}
+          >
             Descargar CV&nbsp;<i className="bi bi-download"></i>
           </button>
+          <a href={cvDocument} download ref={downloadLink} className="hidden">
+            download
+          </a>
         </div>
         <div className="w-1/3 flex justify-end relative p-0">
           <NavbarDialog transparentNavbar={hasTransparentNavbar && onTop} />

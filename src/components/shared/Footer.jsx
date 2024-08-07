@@ -1,5 +1,7 @@
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom"
+import cvDocument from "@/assets/documents/FAHIBRAM-CARCAMO-CV-2024-ES.pdf"
 import { useScrollspy } from "@/hooks/useScrollspy.js"
+import { useRef } from "react"
 
 export function Footer() {
   const socials = [
@@ -8,14 +10,21 @@ export function Footer() {
     { iconClass: "github", title: "GitHub", url: "https://github.com/fahico98" }
   ]
 
-  const [, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
   const navigate = useNavigate()
   const location = useLocation()
   const scrollspy = new useScrollspy()
 
+  const downloadLink = useRef(null)
+
   function scrollToContactSection() {
-    if (location.pathname === "/") setSearchParams({ seccion: scrollspy.links.contact.sectionPath })
-    else navigate(`/?seccion=${scrollspy.links.contact.sectionPath}`)
+    if (location.pathname === "/") {
+      let currentSectionPath = searchParams.get("seccion")
+      if (currentSectionPath && currentSectionPath === scrollspy.links.contact.sectionPath) scrollspy.scrollToSection(scrollspy.links.contact.sectionId)
+      else setSearchParams({ seccion: scrollspy.links.contact.sectionPath })
+    } else {
+      navigate(`/?seccion=${scrollspy.links.contact.sectionPath}`)
+    }
   }
 
   return (
@@ -25,11 +34,14 @@ export function Footer() {
           <p className="text-3xl sm:text-5xl lg:text-6xl font-bold font-serif text-white text-center">Construyamos algo increible...</p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-y-2 sm:gap-x-4">
             <button className="btn-transparent-white btn-sm sm:btn-md md:btn-lg" onClick={scrollToContactSection}>
-              Contácto&nbsp;<i className="bi bi-chat-left-dots"></i>
+              Contáctame&nbsp;<i className="bi bi-chat-left-dots"></i>
             </button>
-            <button className="btn-transparent-white btn-sm sm:btn-md md:btn-lg">
+            <button className="btn-transparent-white btn-sm sm:btn-md md:btn-lg" onClick={() => downloadLink.current.click()}>
               Descargar CV&nbsp;<i className="bi bi-download"></i>
             </button>
+            <a href={cvDocument} download ref={downloadLink} className="hidden">
+              download
+            </a>
           </div>
           <div className="flex justify-start items-center px-0 gap-x-3">
             {socials.map((social, index) => (
@@ -49,7 +61,7 @@ export function Footer() {
           <p className="text-xs sm:text-sm font-sans text-white">
             Creado con amor por{" "}
             <a href="https://twitter.com/fahico98" target="_blank" className="link-white">
-              fahico98
+              Fahibram Cárcamo
             </a>
             .
           </p>
