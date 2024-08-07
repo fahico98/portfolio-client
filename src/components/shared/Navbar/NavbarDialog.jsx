@@ -1,15 +1,18 @@
 import { useSearchParams, useLocation, useNavigate } from "react-router-dom"
+import cvDocument from "@/assets/documents/FAHIBRAM-CARCAMO-CV-2024-ES.pdf"
 import { Popover, Transition } from "@headlessui/react"
 import { useScrollspy } from "@/hooks/useScrollspy.js"
 import PropTypes from "prop-types"
 import { useRef } from "react"
 
 function NavbarDialog({ transparentNavbar }) {
-  const [, setSearchParams] = useSearchParams()
-  const popoverButton = useRef(null)
   const navigate = useNavigate()
+  const [searchParams, setSearchParams] = useSearchParams()
   const location = useLocation()
   const scrollspy = new useScrollspy()
+
+  const popoverButton = useRef(null)
+  const downloadLink = useRef(null)
 
   const NAVBAR_DIALOG_LINKS = scrollspy.linksArray
 
@@ -27,8 +30,18 @@ function NavbarDialog({ transparentNavbar }) {
   ]
 
   function scrollToSection(sectionPath) {
-    if (location.pathname === "/") setSearchParams({ seccion: sectionPath })
-    else navigate(`/?seccion=${sectionPath}`)
+    if (location.pathname === "/") {
+      let currentSectionPath = searchParams.get("seccion")
+      if (currentSectionPath && currentSectionPath === sectionPath) {
+        let currentLink = NAVBAR_DIALOG_LINKS.find(link => link.sectionPath === currentSectionPath)
+        if (currentLink) scrollspy.scrollToSection(currentLink.sectionId)
+      } else {
+        setSearchParams({ seccion: sectionPath })
+      }
+    } else {
+      navigate(`/?seccion=${sectionPath}`)
+    }
+
     popoverButton.current.click()
   }
 
@@ -65,9 +78,12 @@ function NavbarDialog({ transparentNavbar }) {
                 </div>
                 <hr className="block sm:hidden" />
                 <div className="block sm:hidden p-4 w-full">
-                  <button type="button" className="btn-sm btn-transparent-high w-full">
+                  <button type="button" className="btn-sm btn-transparent-high w-full" onClick={() => downloadLink.current.click()}>
                     Descargar CV&nbsp;<i className="bi bi-download"></i>
                   </button>
+                  <a href={cvDocument} download ref={downloadLink} className="hidden">
+                    download
+                  </a>
                 </div>
                 <hr />
                 <div className="w-full flex justify-start items-center gap-x-3 p-4">
